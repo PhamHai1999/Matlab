@@ -1,0 +1,46 @@
+# Matlab
+Nothing special just pratice
+% Viet ham tính tích phân theo phương pháp điểm giữa cho hàm f(x) trong dải
+% a đến b vơi khoảng chia là h=abs(a-b)/50
+% Áp dụng cho hàm sau f(x) = x^2-9 v?i a b là hai số cu?i c?a mã sinh viên
+% n?u trung nhau thì b = a + 3
+% tích phân là tính di?n tích c?a hàm s?, ?? tính ta chia nh? thành các
+% kho?ng nh? coi nh? kho?ng nh? ?ây là hình ch? nh?t ?? tính v?i h là
+% chi?u r?ng trên tr?c x, y là t?a ?? ?i?m khi thay x vào fx so v?i tr?c y.
+% Sau ?ó tính t?ng các chi?u dài r?i nhân v?i h là ra di?n tích c?n tìm
+F=@(x)(x^2-9); % hàm số càn tính
+ a=1;
+ b=5;
+ h=abs(a-b)/50; % 50 la so điểm ta chia trong
+ sum=0; % tính tổng các cạnh
+ for k=1:50 
+     x= a + (k-1/2)*h; % tọa độ x củaa fx để tính điểm y
+     sum = sum + F(x);
+ end
+ fx=sum*h;
+ 
+ % bai 2
+ % cho h? ph??ng trình tuy?n tính nh? sau v?i a là s? cu?i c?a mã sinh viên
+ % 5x1 + (4+i)x2 +ax3 - 4x4 +ix5 = 9
+ % (3-2i)x1 + ax2 - (i-3)x3 - 2x4 - x5 = a
+ % ax1 + x2 - (i-3)x3 - 2ax4 - x5 = ai-2
+ % (a-2i) + x2 -(i-2)x3 - 2x4 - x5 = 7i
+ % (3-ai)x1 + x2 - (i-3)x3 - aix4 - x5 = 7i-a
+ 
+ %Ta gi?i h? ph??ng trình b?ng cách \ hai vecto v?i A là h? s? 5x5 còn b là
+ %nghi?m 5x1
+ 
+ A=[ 5 4+i 5 -4 i ; 3-2i 5 -(i-3) -2 -1; 5 1 -(i-3) -2*5 -1; 5-2i 1 -(i-2) -2 -1; 3-5*i 1 -(i-3) -5 -1];
+ b=[9;5;5*i-2;7i;7i-5];
+ X=A\b 
+ X=sort(X,'descend'); %sort bình thường là tăng dần thêm 'descend' là giảm dần
+ %tìm v? trí ph?n th?c
+ l=find(imag(X==0));
+ %Tìm max
+ max=find(X==max(X));
+ % giá trị nghiệm lớn nhất
+ M=max(X);
+ 
+ 
+ 
+ 
