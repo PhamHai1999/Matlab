@@ -1,0 +1,63 @@
+# Matlab
+Nothing special just pratice
+% Tạo một ma trận A(n,n) gồm các phần tử thuộc tập số phức và ma trận
+% B(n,n) chỉ toàn giá trị 3 với n là số cuối cùng của mã số sinh viên.
+% Trong trường hợp số cuối cùng mã số sinh viên bằng 0 hoặc 1 hoặc 2 thì
+% đặt n = 7
+%a) thực hiện các phép tính nhân, chia ma trận
+%b) thực hiện các phép tính nhân chia phần tử trong ma trận
+%c) So sánh ma trận A với ma trận B, tại vị trí phần tử ma trận A lớn hơn B
+%phần tử ma trận B được đặt bằng j
+%d) chuyển ma trận A thành vector C
+%e) tìm vị trí ma trận C có phần thực bằng 0
+
+A=i*randi([0 5],5)+randi([0 5],5);
+B=3*ones(5,5);
+%a)
+nhan=A*B;
+chia=A/B;
+%b
+Nhankhac=A.*B;
+Chiakhac=A./B;
+%c
+v=(A>B);
+B(find(A>B))=j;
+%d)
+C=reshape(A,[1,5*5]);
+%e
+D=find(real(C)==0);
+
+%bài 2 viết hàm tìm nghiệm nhỏ hơn hoặc bằng 0 của phương trình bậc 2 sau
+%ax^2+bx+c=0. Cụ thể kết quả trả ra là nghiệm nếu tồn tại nghiệm thỏa mãn
+%yêu cầu đề bài. Kết quả ra là null nếu không tồn tại nghiệm thỏa mãn yêu
+%cầu đề bài. 
+% Áp dụng a b c là 3 số cuối của mã sinh viên
+a=1;
+b=10;
+c=9;
+delta = b^2-4*a*c;
+if delta<0
+    x='null';
+elseif delta == 0
+        x= -b/2*a;
+        if x <=0
+            x=x;
+        else
+            x='null';
+        end
+else
+     x1=(-b+sqrt(delta))/2*a;
+     x2=(-b-sqrt(delta))/2*a;
+     if(x1<=0)
+         x1=x1;
+     else
+         x1='null';
+     end
+     if(x2<=0)
+         x2=x2;
+     else
+         x2='null';
+     end
+     
+end
+
