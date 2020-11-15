@@ -1,0 +1,43 @@
+# Matlab
+Nothing special just pratice
+% Tạo vector hàng A(1,n) gồm các giá trị thập phân trong khoảng n với n là
+% hai số cuối của mã sinh viên. Nếu a < 10 thì đặt n = 50
+%a) sử dụng lệnh de2bi trong matlab dể chuyển giá trị thập phân phân trong
+%vector A thành giá trị nhị phân
+%b) trong ma trận nhị phân nhận được, sau một cột gán thêm một cột có giá
+%trị bằng giá trị đảo của cột trước đó
+%a)
+A=randi([1,15],1,15);
+B=de2bi(A);
+%b
+C=B(:,2);   %lấy giá trị cột 2
+D=B(:,3);   %...3
+E=B(:,4);   %...4
+F=abs(B(:,1)-1);    %Đảo giá trị cột 1
+G=abs(B(:,2)-1);    %Đảo giá trị cột 2
+H=abs(B(:,3)-1);    %Đảo giá trị cột 3
+I=abs(B(:,4)-1);    %Đảo giá trị cột 4
+B(:,2)=F;           %Gán giá trị cột 2 bằng giá trị đảo cột 1
+B(:,3)=C;           %Gán giá trị cột 3 bằng giá trị  cột 2
+B(:,4)=G            %Gán giá trị cột 4 bằng giá trị đảo cột 2
+B(:,5)=D;           %Gán giá trị cột 5 bằng giá trị  cột 3
+B(:,6)=H;           %Gán giá trị cột 6 bằng giá trị đảo cột 3
+B(:,7)=E;           %Gán giá trị cột 7 bằng giá trị  cột 4
+B(:,8)=I;           %Gán giá trị cột 8 bằng giá trị đảo cột 4
+
+%Viết hàm tìm nghiệm của phương trình vi phân theo phương pháp euler trong
+%khoảng (a đến b) với dự đoán ban đầu là y(0)=a, cỡ bước h=abs(a-b)/25.
+% Áp dụng cho phương trình y'(t) = ay(t) + cos(by(t)) và a b là hai số cuối
+% của mã sinh viên, Nếu hai số cuối trùng nhau thì b = a + b;
+y0=1;
+h=abs(1-5)/25;
+y(1)=y0;
+for k=2:25
+    y1= y(k-1) + h*(y(k-1)+cos(5*y(k-1)));
+    diff=1;
+    while abs(diff)>.05
+        y2= y(k-1) + h/2*((y(k-1)+cos(5*y(k-1)))+y1+cos(5*y1));
+        diff = y1-y2; y1=y2;
+    end
+    y(k)=y1;
+end
